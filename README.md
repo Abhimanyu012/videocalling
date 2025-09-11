@@ -1,9 +1,12 @@
-# videocalling
-![Video Call Illustration](https://user-images.githubusercontent.com/12345678/placeholder-video-call.png)
+# VideoCalling
 
-A simple video calling application.
+A simple and easy-to-use video calling application.
 
 ---
-- Supports real-time video and audio
-- Easy to set up and use
-- Cross-platform compatibility
+
+## Features
+
+- 📹 Real-time video and audio communication
+- ⚡ Quick setup process
+- 💻 Cross-platform compatibility
+- 🧑‍💻 User-friendly interface
