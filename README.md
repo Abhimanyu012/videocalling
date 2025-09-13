@@ -29,7 +29,6 @@ videocalling/
     │   └── styles/
     ├── index.html
     ├── src/main.jsx
-    └── .
 ```
 
 ## Getting Started
