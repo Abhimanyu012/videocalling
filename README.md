@@ -1,27 +1,57 @@
-# Videocalling - MERN Skeleton
+# Videocalling MERN Skeleton
 
-This repo contains a minimal MERN folder structure ready to build a videocalling app.
+A minimal MERN stack template to kickstart your videocalling app development.
 
-## Structure
-- backend/ — Express + MongoDB
-  - src/{controllers,routes,models,middlewares,services,utils,validations,config}
-  - src/index.js (server bootstrap)
-  - .env.example
-- frontend/ — React (Vite-ready)
-  - src/{components,pages,hooks,context,services,utils,styles}
-  - index.html, src/main.jsx
-  - .env.example
+## Project Structure
 
-## Quick start
-Backend (Node 18+):
-- npm init -y
-- npm i express mongoose cors dotenv zod jsonwebtoken bcryptjs morgan
-- npm i -D nodemon
-- Create .env from .env.example and run dev script
+```
+videocalling/
+├── backend/
+│   ├── src/
+│   │   ├── controllers/
+│   │   ├── routes/
+│   │   ├── models/
+│   │   ├── middlewares/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   ├── validations/
+│   │   └── config/
+│   ├── src/index.js
+│   └── .env.example
+└── frontend/
+    ├── src/
+    │   ├── components/
+    │   ├── pages/
+    │   ├── hooks/
+    │   ├── context/
+    │   ├── services/
+    │   ├── utils/
+    │   └── styles/
+    ├── index.html
+    ├── src/main.jsx
+    └── .env.example
+```
 
-Frontend (Vite + React):
-- npm create vite@latest . -- --template react
-- npm i
-- npm run dev
+## Getting Started
 
-Update CORS_ORIGIN in backend .env to match Vite dev URL.
+### Backend (Node.js 18+)
+
+```bash
+npm init -y
+npm install express mongoose cors dotenv zod jsonwebtoken bcryptjs morgan
+npm install --save-dev nodemon
+# Copy .env.example to .env and configure your environment variables
+npm run dev
+```
+
+### Frontend (Vite + React)
+
+```bash
+npm create vite@latest . -- --template react
+npm install
+npm run dev
+```
+
+> **Note:**  
+> Set `CORS_ORIGIN` in your backend `.env` file to match your Vite dev server URL.
+
