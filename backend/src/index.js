@@ -6,11 +6,20 @@ import { connectDB } from './config/db.js'
 
 const app = express()
 
-app.use(cors({ origin: process.env.CORS_ORIGIN?.split(',') || '*' }))
+app.use(cors({ origin: process.env.CORS_ORIGIN ? process.env.CORS_ORIGIN.split(',') : true }))
 app.use(express.json())
 app.use(morgan('dev'))
 
 app.get('/health', (_req, res) => {
+  res.json({ ok: true, service: 'backend', ts: new Date().toISOString() })
+})
+app.post('/api/auth/signup', (_req, res) => {
+  res.json({ ok: true, service: 'backend', ts: new Date().toISOString() })
+})
+app.post('/api/auth/login', (_req, res) => {
+  res.json({ ok: true, service: 'backend', ts: new Date().toISOString() })
+})
+app.post('/api/auth/logout', (_req, res) => {
   res.json({ ok: true, service: 'backend', ts: new Date().toISOString() })
 })
 
