@@ -5,8 +5,8 @@ export const connectDB = async () => {
   if (!URI) throw new Error('MONGO_URI is not set')
   mongoose.set('strictQuery', true)
   try {
-    await mongoose.connect(URI, { autoIndex: true })
-    console.log('MongoDB connected')
+    const conn = await mongoose.connect(URI)
+    console.log(`MongoDb connected: ${conn.connection.host}`)
   } catch (error) {
     console.error('MongoDB connection error:', error)
     throw error
