@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
-import bcrypt, { genSalt } from "bcryptjs"
+import bcrypt from "bcryptjs"
 const userSchema = new mongoose.Schema({
-    fullname: {
+    fullName: {
         type: String,
         required: true
 
@@ -42,15 +42,16 @@ const userSchema = new mongoose.Schema({
 // You can add pre-save logic here if needed, otherwise remove this hook.
 // Example of a valid pre-save hook (currently does nothing):
 userSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return next();
     try {
-        if (this.isModified("password")) {
-            const salt = await bcrypt.genSalt(10);
-            this.password = await bcrypt.hash(this.password, salt);
-        }
+        const salt = await bcrypt.genSalt(10);
+        this.password = await bcrypt.hash(this.password, salt);
         next();
-    } catch (error) {
+    }
+    catch (error) {
         next(error);
     }
 });
+
 
 export const User = mongoose.model("User", userSchema);
