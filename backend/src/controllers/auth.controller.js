@@ -45,9 +45,50 @@ export const signup = async (req, res) => {
         res.status(500).json({ message: "Internal server error" })
     }
 }
-export const login = (_req, res) => {
-    res.send("this login controller")
+//login
+
+export const login = async (req, res) => {
+    try {
+        const { email, password } = req.body
+        if (!email || !password) return res.status(400).json({ message: "all the fields are required" })
+
+        const user = await User.findOne({ email })
+
+        if (!user) {
+            return res.status(401).json({ message: "Invalid email or password" })
+        }
+        // Password verification using bcrypt
+        const isPasswordValid = await user.matchPassword(password)
+        if (!isPasswordValid) {
+            return res.status(400).json({ message: "Invalid email or password" })
+
+        }
+        const token = jwt.sign({ userId: user._id }, process.env.JWT_SECRET_KEY, {
+            expiresIn: "7d",
+        })
+        res.cookie("jwt", token, {
+            maxAge: 7 * 24 * 60 * 60 * 1000,
+            httpOnly: true,
+            sameSite: "strict",
+            secure: process.env.NODE_ENV === "production"
+        })
+        console.log("login succesfully")
+        res.status(200).json({ success: true, message: "Login successfully", user })
+
+    } catch (error) {
+        console.log("Error in login controller: ", error)
+        res.status(500).json({ message: "Internal server error", error })
+    }
 }
+//logout
+
+
 export const logout = (_req, res) => {
-    res.send("this logout controller")
+    res.clearCookie("jwt", {
+        httpOnly: true,
+        sameSite: "strict",
+        secure: process.env.NODE_ENV === "production"
+    })
+    console.log("logout successfully")
+    res.status(200).json({ success: true, message: "Logged out successfully" })
 }
