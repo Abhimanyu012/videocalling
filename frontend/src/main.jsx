@@ -1,14 +1,10 @@
-import React from 'react'
+import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import './index.css'
+import App from './App.jsx'
 
-function App() {
-  return (
-    <div style={{ fontFamily: 'sans-serif', padding: 24 }}>
-      <h1>Videocalling App</h1>
-      <p>React frontend is ready.</p>
-    </div>
-  )
-}
-
-const root = createRoot(document.getElementById('root'))
-root.render(<App />)
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <App />
+  </StrictMode>,
+)
