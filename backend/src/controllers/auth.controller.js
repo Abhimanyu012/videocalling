@@ -105,10 +105,10 @@ export const logout = (_req, res) => {
     res.status(200).json({ success: true, message: "Logged out successfully" })
 }
 
-export const onboard =async (req, res) => {
+export const onboard = async (req, res) => {
     try {
         const userId = req.user._id
-        const { fullName, nativeLanguage, learningLanguage, location } = req.body
+        const { fullName, nativeLanguage, learningLanguage, location, bio } = req.body
         if (!fullName || !bio || !nativeLanguage || !learningLanguage || !location) {
             return res.status(400).json({
                 message: "All fields are required",
@@ -119,11 +119,24 @@ export const onboard =async (req, res) => {
                     !nativeLanguage && "nativeLanguage",
                     !location && "location"
                 ]
-            })
+            }
+            )
         }
-        const updateUser = await User.findByIdAndUpdate(userId)
-    } catch (error) {
-
+        const updateUser = await User.findByIdAndUpdate(
+            userId,
+            {
+                fullName,
+                nativeLanguage,
+                learningLanguage,
+                location,
+                bio
+            },
+            { new: true }
+        );
+        res.status(200).json({ success: true, user: updateUser });
     }
-    res.send("this is from onboard")
+    catch (error) {
+        console.log("error ye hai: ", error)
+        res.status(500).json({ message: "Internal server error" });
+    }
 }
