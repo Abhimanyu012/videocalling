@@ -7,25 +7,28 @@ export const protectRoute = async (req, res, next) => {
 
         if (!token) {
             return res.status(401).json({
-                message: "Unathorized - No token provided"
+                message: "Unauthorized - No token provided"
             })
         }
 
         const decoded = jwt.verify(token, process.env.JWT_SECRET_KEY)
         if (!decoded) {
             return res.status(401).json({
-                message: "Unathorize - Inavlid token"
+                message: "Unauthorized - Invalid token"
             })
         }
         const user = await User.findById(decoded.userId).select("-password")
         if (!user) {
             return res.status(401).json({
-                message: "Unatathorize - User is not found"
+                message: "Unauthorized - User not found"
             })
         }
         req.user = user
         next()
     } catch (error) {
-        console.log("Error is protect route middlleware", error)
+        console.log("Error in protect route middleware", error)
+        return res.status(500).json({
+            message: "Internal server error"
+        })
     }
 }

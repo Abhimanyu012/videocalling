@@ -118,25 +118,37 @@ export const onboard = async (req, res) => {
                     !learningLanguage && "learningLanguage",
                     !nativeLanguage && "nativeLanguage",
                     !location && "location"
-                ]
+                ].filter(Boolean)
             }
             )
         }
         const updateUser = await User.findByIdAndUpdate(
             userId,
             {
-                fullName,
-                nativeLanguage,
-                learningLanguage,
-                location,
-                bio
+                ...req.body,
+                isOnboarded: true
             },
             { new: true }
         );
+        if (!updateUser) return res.status(404).json({ message: "User not found" })
+        try {
+            await upsertStreamUser({
+                id: updateUser._id.toString(),
+                fullName: updateUser.fullName,
+                image: updateUser.profilePic || "",
+
+            })
+            console.log(`Stream user updated after onboarding for ${updateUser.fullName}`)
+        } catch (streamError) {
+            console.log("Error updating during stream user during onboarding", streamError.message)
+        }
+
+
         res.status(200).json({ success: true, user: updateUser });
+
     }
     catch (error) {
-        console.log("error ye hai: ", error)
+        console.log("onboarding error: ", error)
         res.status(500).json({ message: "Internal server error" });
     }
 }
