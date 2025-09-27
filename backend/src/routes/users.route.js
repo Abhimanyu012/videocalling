@@ -1,15 +1,18 @@
-import express from 'express'
-import { User } from '../models/user.model.js'
-const router = express.Router()
+import express from 'express';
 
-router.get("/users", async (req, res) => {
-    try {
-        const users = await User.find();
-        res.json(users);
-        
-    } catch (error) {
-        res.status(500).json({ error: error.message });
-    }
-})
+import { protectRoute } from '../middlewares/auth.middleware.js';
+import { getRecommendedUsers, getFriends, sendFriendRequest, acceptFriendRequest, getFriendRequest, getOutgoingFriendRequest } from '../controllers/user.controllers.js';
+const router = express.Router();
 
-export default router;
+router.use(protectRoute)
+router.get("/", getRecommendedUsers)
+router.get("/friends", getFriends)
+
+router.post("/friend-request/:id", sendFriendRequest)
+router.put("/friend-request/:id/accept", acceptFriendRequest)
+
+router.get("/friend-request/", getFriendRequest)
+router.get("/outgoing-friend-request/", getOutgoingFriendRequest)
+
+
+export default router;  

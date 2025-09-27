@@ -106,6 +106,7 @@ export const logout = (_req, res) => {
 }
 
 export const onboard = async (req, res) => {
+    // console.log("thsi is onboard",req.user)
     try {
         const userId = req.user._id
         const { fullName, nativeLanguage, learningLanguage, location, bio } = req.body
