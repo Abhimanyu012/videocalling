@@ -1,6 +1,6 @@
 function App() {
     return (
-        <div className="min-h-screen flex items-center justify-center bg-base-200" data-theme="cupcake"> 
+        <div className="min-h-screen flex items-center justify-center bg-base-200" data-theme="dark --prefersdark"> 
             <div className="card w-96 bg-base-100 shadow-xl">
                 <div className="card-body">
                     <h2 className="card-title">Welcome to Video Calling App</h2>
