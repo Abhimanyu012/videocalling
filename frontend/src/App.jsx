@@ -1,20 +1,14 @@
-import React from "react";
+import React from 'react'
 
-function App() {
-  return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-base-200">
-      <div className="card w-96 bg-base-100 shadow-xl">
-        <div className="card-body items-center text-center">
-          <h2 className="card-title">Welcome to Video Calling App</h2>
-          <p className="mb-4">Get started by joining or creating a room.</p>
-          <div className="card-actions">
-            <button className="btn btn-primary">Create Room</button>
-            <button className="btn btn-secondary">Join Room</button>
-          </div>
+const App = () => {
+    return (
+        <div data-theme="cupcake" className="min-h-screen flex items-center justify-center bg-base-200">
+            <div className="p-8 rounded-lg shadow-lg bg-base-100">
+                <h1 className="text-3xl font-bold text-primary mb-4">App</h1>
+                <p className="text-base-content">DaisyUI theme applied!</p>
+            </div>
         </div>
-      </div>
-    </div>
-  );
+    )
 }
 
-export default App;
+export default App
