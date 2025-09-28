@@ -1,7 +1,7 @@
 import express from 'express';
 
 import { protectRoute } from '../middlewares/auth.middleware.js';
-import { getRecommendedUsers, getFriends, sendFriendRequest, acceptFriendRequest, getFriendRequest, getOutgoingFriendRequest } from '../controllers/user.controllers.js';
+import { getRecommendedUsers, getFriends, sendFriendRequest, acceptFriendRequest, getFriendRequest, getOutgoingFriendRequest } from '../controllers/user.controller.js';
 const router = express.Router();
 
 router.use(protectRoute)
