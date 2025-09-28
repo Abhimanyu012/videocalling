@@ -42,7 +42,7 @@ export const sendFriendRequest = async (req, res) => {
         const myId = req.user.id
         const { id: recipientId } = req.params
 
-        if (myId == recipient) {
+        if (myId == recipientId) {
             return res.status(400).json({ message: "You can't send friend request to yourself" })
         }
         const recipient = await User.findById(recipientId)
@@ -86,7 +86,7 @@ export const sendFriendRequest = async (req, res) => {
     }
 }
 
-export const acceptFriendRequest = async () => {
+export const acceptFriendRequest = async (req, res) => {
     try {
         const { id: requestId } = req.params
         const friendRequest = await FriendRequest.findById(requestId)
@@ -131,13 +131,13 @@ export const getFriendRequest = async (req, res) => {
         const incomingRequest = await FriendRequest.find({
             recipient: req.user.id,
             status: "pending"
-        }).populate("sender", "fullName profilePic nativelanguage learningLanguage")
+        }).populate("sender", "fullName profilePic nativeLanguage learningLanguage")
         const acceptedReqs = await FriendRequest.find({
             sender: req.user.id,
             status: "accepted",
 
         }).populate("recipient", "fullName profilePic");
-        req.status(200).json({
+        res.status(200).json({
             incomingRequest, acceptedReqs
         })
     } catch (error) {
