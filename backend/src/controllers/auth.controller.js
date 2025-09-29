@@ -35,7 +35,7 @@ export const signup = async (req, res) => {
                 name: newUser.fullName,
                 image: newUser.profilePic || ""
             })
-            console.log(`Stream user Created for${newUser.fullName}`)
+            console.log(`Stream user Created for ${newUser.fullName}`)
         }
         catch (error) {
             console.log("error creating in streamUser: ", error)
