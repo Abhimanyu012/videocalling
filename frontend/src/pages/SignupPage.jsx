@@ -2,7 +2,8 @@ import { useState } from 'react'
 import { ShipWheelIcon } from "lucide-react"
 import { Link } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { axiosInstance } from '../lib/axios';
+
+import { signup } from '../lib/api';
 
 const SignupPage = () => {
     const [signupData, setSignUpData] = useState({
@@ -12,11 +13,8 @@ const SignupPage = () => {
     });
     const queryClient = useQueryClient()
 
-    const { mutate, isPending, error } = useMutation({
-        mutationFn: async () => {
-            const response = await axiosInstance.post("/auth/signup", signupData)
-            return response.data
-        },
+    const { mutate:signupMutation, isPending, error } = useMutation({
+        mutationFn: signup,
         onSuccess: (data) => {
             console.log("Signup successful:", data);
             queryClient.invalidateQueries({
@@ -27,7 +25,7 @@ const SignupPage = () => {
 
     const handleSignup = (e) => {
         e.preventDefault()
-        mutate()
+        signupMutation(signupData)
     }
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -35,16 +33,27 @@ const SignupPage = () => {
                 {/* Left side: Signup form */}
                 <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
                     {/* Logo */}
-                    <div className="mb-8 flex items-center gap-3 justify-center lg:justify-start">
+                    <div className="mb-3 flex items-center gap-3 justify-center lg:justify-start">
                         <ShipWheelIcon className="size-10 text-primary" />
                         <span className="text-3xl font-extrabold text-primary tracking-tight">Let'sMEET</span>
                     </div>
                     <p className="text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
                         Create your account
                     </p>
-                    <p className="text-base text-gray-600 mb-8 text-center lg:text-left">
+                    <p className="text-base text-gray-600 mb-2 text-center lg:text-left">
                         Join Let'sMEET and start connecting instantly.
                     </p>
+                    {/* {error if any} */}
+
+                    {
+                        error&&(
+                            <div className="alert alert-error mb-3">
+                                <span>{error.response.data.message }</span>
+                            </div>
+                        )
+                    }
+                    <hr className='mb-4 text-violet-400 shadow-2xl font-extralight'/>
+
                     {/* Signup Form */}
                     <form onSubmit={handleSignup} className="space-y-6">
                         <div>
