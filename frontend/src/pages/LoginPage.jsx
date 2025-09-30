@@ -1,16 +1,33 @@
 import React, { useState } from 'react'
+// import { useNavigate } from 'react-router-dom';
 import { ShipWheelIcon } from "lucide-react"
 import { Link } from 'react-router';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
+import { login } from '../lib/api';
 
 const LoginPage = () => {
-  const [signupData, setSignUpData] = useState({
+  const [loginData, setLoginData] = useState({
     email: "",
     password: ""
   });
 
-  const handleSignup = (e) => {
-    e.preventDefault()
-  }
+ const queryClient = useQueryClient()
+
+  const { mutate:loginMutation, isPending, error } = useMutation({
+    mutationFn: login,
+    onSuccess: (data) => {
+      console.log("login successful:", data);
+      queryClient.invalidateQueries({
+        queryKey: ["authUser"]
+      });
+      // Navigation handled by App.jsx route guards
+    }
+  })
+
+    const handleLogin = (e) => {
+        e.preventDefault()
+        loginMutation(loginData)
+    }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-2 sm:px-4">
       <div className="bg-white shadow-lg rounded-xl flex flex-col lg:flex-row w-full max-w-4xl overflow-hidden border border-primary/20 p-4 sm:p-6 md:p-8">
@@ -30,15 +47,15 @@ const LoginPage = () => {
           </p>
           
           {/* Signup Form */}
-          <form onSubmit={handleSignup} className="space-y-5">
+          <form onSubmit={handleLogin} className="space-y-5">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <input
                 type="email"
                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 placeholder="email@gmail.com"
-                value={signupData.email}
-                onChange={e => setSignUpData({ ...signupData, email: e.target.value })}
+                value={loginData.email}
+                onChange={e => setLoginData({ ...loginData, email: e.target.value })}
                 required
               />
             </div>
@@ -48,8 +65,8 @@ const LoginPage = () => {
                 type="password"
                 className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
                 placeholder="********"
-                value={signupData.password}
-                onChange={e => setSignUpData({ ...signupData, password: e.target.value })}
+                value={loginData.password}
+                onChange={e => setLoginData({ ...loginData, password: e.target.value })}
                 required
               />
             </div>
@@ -57,7 +74,7 @@ const LoginPage = () => {
               type="submit"
               className="w-full py-2 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition text-sm"
             >
-              Login
+           {isPending ? "Logging..." : "Login"}
             </button>
           </form>
           <p className="mt-4 text-sm text-gray-500 text-center lg:text-left">
