@@ -25,8 +25,10 @@ const OnboardingPage = () => {
     onSuccess: () => {
       toast.success("Profile Onboarded successfully")
       queryClient.invalidateQueries({
-        queryKey: ["authUser"]
-      })
+        queryKey: ["authUser"]})
+      },
+      onError:(error)=>{
+        toast.error(error.response.data.message)
     }
   })
   const handleSubmit = (e) => {
