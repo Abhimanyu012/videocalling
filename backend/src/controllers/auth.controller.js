@@ -127,7 +127,7 @@ export const onboard = async (req, res) => {
             userId,
             {
                 ...req.body,
-                isOnboarded: true
+                isOnboarded: true   // This sets isOnboarded to true
             },
             { new: true }
         );
