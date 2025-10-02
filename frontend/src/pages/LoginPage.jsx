@@ -1,9 +1,9 @@
 import { useState } from 'react'
-// import { useNavigate } from 'react-router-dom';
-import { ShipWheelIcon, Eye, EyeOff } from "lucide-react"
+import { Eye, EyeOff } from "lucide-react"
 import { Link } from 'react-router';
 
 import { useLogin } from '../hooks/useLogin';
+import Logo from '../components/Logo';
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState({
@@ -24,9 +24,8 @@ const LoginPage = () => {
         {/* Left side: Signup form */}
         <div className="w-full lg:w-1/2 p-4 sm:p-6 md:p-8 flex flex-col justify-center">
           {/* Logo */}
-          <div className="mb-8 flex items-center gap-3 justify-center lg:justify-start">
-            <ShipWheelIcon className="size-10 text-primary" />
-            <span className="text-3xl font-extrabold text-primary tracking-tight">Let'sMEET</span>
+          <div className="mb-8 justify-center lg:justify-start">
+            <Logo size="large" variant="default" className="justify-center lg:justify-start" />
           </div>
           <p className="text-xl font-semibold text-gray-800 mb-1 text-center lg:text-left">
             Welcome Back
@@ -48,7 +47,7 @@ const LoginPage = () => {
               <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
               <input
                 type="email"
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
+                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm text-gray-900 bg-white"
                 placeholder="email@gmail.com"
                 value={loginData.email}
                 onChange={e => setLoginData({ ...loginData, email: e.target.value })}
@@ -60,7 +59,7 @@ const LoginPage = () => {
               <div className="relative">
                 <input
                   type={showPassword ? "text" : "password"}
-                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm pr-10"
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm pr-10 text-gray-900 bg-white"
                   placeholder="********"
                   value={loginData.password}
                   onChange={e => setLoginData({ ...loginData, password: e.target.value })}

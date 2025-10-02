@@ -3,8 +3,9 @@ import useAuthUser from '../hooks/useAuthUser'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { completeOnBoarding } from '../lib/api.js'
-import { CameraIcon, LoaderIcon, MapIcon, MapPinIcon, ShipWheelIcon, ShuffleIcon } from 'lucide-react'
+import { CameraIcon, LoaderIcon, MapIcon, MapPinIcon, ShuffleIcon } from 'lucide-react'
 import { LANGUAGES } from '../constants';
+import Logo from '../components/Logo';
 
 
 const OnboardingPage = () => {
@@ -159,7 +160,8 @@ const OnboardingPage = () => {
                   Onboarding...
                 </>
               ) : (
-                <><ShipWheelIcon className="size-5 mr-2" />
+                <>
+                  <Logo size="small" showText={false} className="mr-2" />
                   Complete OnBoarding
                 </>
               )}

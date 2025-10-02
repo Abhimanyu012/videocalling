@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { ShipWheelIcon, Eye, EyeOff } from "lucide-react"
+import { Eye, EyeOff } from "lucide-react"
+import Logo from '../components/Logo'
 import { Link } from 'react-router-dom';
 import useSignup from '../hooks/useSignup';
 
@@ -22,9 +23,8 @@ const SignupPage = () => {
                 {/* Left side: Signup form */}
                 <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
                     {/* Logo */}
-                    <div className="mb-3 flex items-center gap-3 justify-center lg:justify-start">
-                        <ShipWheelIcon className="size-10 text-primary" />
-                        <span className="text-3xl font-extrabold text-primary tracking-tight">Let'sMEET</span>
+                    <div className="mb-3 justify-center lg:justify-start">
+                        <Logo size="large" variant="default" className="justify-center lg:justify-start" />
                     </div>
                     <p className="text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
                         Create your account
@@ -49,7 +49,7 @@ const SignupPage = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition text-gray-900 bg-white"
                                 placeholder="Type your name"
                                 value={signupData.fullName}
                                 onChange={e => setSignUpData({ ...signupData, fullName: e.target.value })}
@@ -60,7 +60,7 @@ const SignupPage = () => {
                             <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
                             <input
                                 type="email"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
+                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition text-gray-900 bg-white"
                                 placeholder="email@gmail.com"
                                 value={signupData.email}
                                 onChange={e => setSignUpData({ ...signupData, email: e.target.value })}
@@ -72,7 +72,7 @@ const SignupPage = () => {
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition pr-10"
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition pr-10 text-gray-900 bg-white"
                                     placeholder="********"
                                     value={signupData.password}
                                     onChange={e => setSignUpData({ ...signupData, password: e.target.value })}
