@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { ShipWheelIcon, Eye, EyeOff } from "lucide-react"
 import { Link } from 'react-router-dom';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-
-import { signup } from '../lib/api';
+import useSignup from '../hooks/useSignup';
 
 const SignupPage = () => {
     const [signupData, setSignUpData] = useState({
@@ -12,17 +10,7 @@ const SignupPage = () => {
         password: ""
     });
     const [showPassword, setShowPassword] = useState(false);
-    const queryClient = useQueryClient()
-
-    const { mutate:signupMutation, isPending, error } = useMutation({
-        mutationFn: signup,
-        onSuccess: (data) => {
-            console.log("Signup successful:", data);
-            queryClient.invalidateQueries({
-                queryKey: ["authUser"]
-            })
-        }
-    })
+    const { isPending, error, signupMutation } = useSignup()
 
     const handleSignup = (e) => {
         e.preventDefault()
@@ -47,13 +35,13 @@ const SignupPage = () => {
                     {/* {error if any} */}
 
                     {
-                        error&&(
+                        error && (
                             <div className="alert alert-error mb-3">
-                                <span>{error.response.data.message }</span>
+                                <span>{error.response.data.message}</span>
                             </div>
                         )
                     }
-                    <hr className='mb-4 text-violet-400 shadow-2xl font-extralight'/>
+                    <hr className='mb-4 text-violet-400 shadow-2xl font-extralight' />
 
                     {/* Signup Form */}
                     <form onSubmit={handleSignup} className="space-y-6">
