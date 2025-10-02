@@ -90,7 +90,7 @@ const CustomChannelPreview = (props) => {
                         {otherMember?.user?.name || 'Unknown User'}
                     </h3>
                     {lastMessage?.created_at && (
-                        <span className={`text-xs flex-shrink-0 ml-2 ${isActive ? 'text-primary' : 'text-base-content/60'}`}>
+                        <span className={`text-xs flex-shrink-0 ml-2 ${isActive ? 'text-primary' : 'text-base-content/70'}`}>
                             {formatTime(lastMessage.created_at)}
                         </span>
                     )}
@@ -159,7 +159,7 @@ const CustomChannelHeader = ({ onBack, onVideoCall, onVoiceCall }) => {
                         <h2 className="font-bold text-base-content truncate text-sm">
                             {otherMember?.user?.name || 'Unknown User'}
                         </h2>
-                        <p className="text-xs text-base-content/60 flex items-center gap-1">
+                        <p className="text-xs text-base-content/70 flex items-center gap-1">
                             {isOnline ? (
                                 <>
                                     <span className="w-1.5 h-1.5 bg-success rounded-full animate-pulse"></span>
@@ -339,14 +339,14 @@ const ChatPage = () => {
                             {/* Modern Search Bar */}
                             <div className="relative">
                                 <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                                    <Search className="w-4 h-4 text-base-content/50" />
+                                    <Search className="w-4 h-4 text-base-content/60" />
                                 </div>
                                 <input
                                     type="text"
                                     placeholder="Search conversations..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full pl-10 pr-4 py-2.5 bg-base-100 text-base-content placeholder:text-base-content/50 rounded-lg border-2 border-transparent focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all"
+                                    className="w-full pl-10 pr-4 py-2.5 bg-base-100 text-base-content placeholder:text-base-content/60 rounded-lg border-2 border-transparent focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/20 transition-all"
                                 />
                             </div>
                         </div>

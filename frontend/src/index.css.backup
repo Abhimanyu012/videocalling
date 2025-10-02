@@ -64,18 +64,6 @@
 }
 
 /* Message Bubbles Theme */
-.str-chat__message-simple-text {
-  background-color: transparent !important;
-}
-
-.str-chat__message--me .str-chat__message-simple-text {
-  background-color: transparent !important;
-}
-
-.str-chat__message--other .str-chat__message-simple-text {
-  background-color: transparent !important;
-}
-
 .str-chat__message--me .str-chat__message-simple-text-inner {
   background-color: hsl(var(--p)) !important;
   color: hsl(var(--pc)) !important;
@@ -179,10 +167,6 @@
 }
 
 /* Date Separator Theme */
-.str-chat__date-separator {
-  background-color: transparent !important;
-}
-
 .str-chat__date-separator-line {
   background-color: hsl(var(--bc) / 0.3) !important;
 }
@@ -195,19 +179,6 @@
 /* Avatar Theme */
 .str-chat__avatar {
   border: 2px solid hsl(var(--b3));
-  background-color: hsl(var(--b2)) !important;
-}
-
-.str-chat__message-sender-avatar {
-  background-color: transparent !important;
-}
-
-.str-chat__avatar--one-letter {
-  background-color: hsl(var(--b2)) !important;
-}
-
-.str-chat__avatar-image {
-  background-color: transparent !important;
 }
 
 /* Loading Indicator Theme */
@@ -222,22 +193,6 @@
 }
 
 /* Attachment Theme */
-.str-chat__attachment-list {
-  background-color: transparent !important;
-}
-
-.str-chat__message-attachment {
-  background-color: transparent !important;
-}
-
-.str-chat__message-attachment-dynamic-size {
-  background-color: transparent !important;
-}
-
-.str-chat__message-attachment--file {
-  background-color: transparent !important;
-}
-
 .str-chat__message-attachment-card {
   background-color: hsl(var(--b2)) !important;
   border-color: hsl(var(--bc) / 0.2) !important;
@@ -274,35 +229,12 @@
   color: hsl(var(--bc) / 0.7) !important;
 }
 
-.str-chat__message-status {
-  color: hsl(var(--bc) / 0.7) !important;
-  background-color: transparent !important;
-}
-
 .str-chat__message-timestamp {
-  color: hsl(var(--bc) / 0.7) !important;
-}
-
-.str-chat__message-simple-timestamp {
-  color: hsl(var(--bc) / 0.7) !important;
-}
-
-/* Read Receipts */
-.str-chat__message-delivery-status {
-  color: hsl(var(--bc) / 0.7) !important;
-}
-
-.str-chat__message-read-by {
-  background-color: transparent !important;
   color: hsl(var(--bc) / 0.7) !important;
 }
 
 /* Message Username/Sender */
 .str-chat__message-sender-name {
-  color: hsl(var(--bc)) !important;
-}
-
-.str-chat__message-simple-name {
   color: hsl(var(--bc)) !important;
 }
 
@@ -331,43 +263,9 @@
   background-color: hsl(var(--b1)) !important;
 }
 
-.str-chat__window {
-  background-color: hsl(var(--b1)) !important;
-}
-
-.str-chat__window-wrapper {
-  background-color: hsl(var(--b1)) !important;
-}
-
 /* Message Simple Container */
 .str-chat__message-simple {
   color: hsl(var(--bc)) !important;
-  background-color: transparent !important;
-}
-
-/* Base Message Container */
-.str-chat__message {
-  background-color: transparent !important;
-}
-
-.str-chat__message--other {
-  background-color: transparent !important;
-}
-
-.str-chat__message--me {
-  background-color: transparent !important;
-}
-
-.str-chat__message--regular {
-  background-color: transparent !important;
-}
-
-.str-chat__message--received {
-  background-color: transparent !important;
-}
-
-.str-chat__message-simple--me {
-  background-color: transparent !important;
 }
 
 /* Link Colors */
@@ -542,11 +440,6 @@
 
 .str-chat__message-attachment-file--item-text {
   color: hsl(var(--bc)) !important;
-  background-color: transparent !important;
-}
-
-.str-chat__message-attachment-file--item-first-row {
-  background-color: transparent !important;
 }
 
 .str-chat__message-attachment-file--item-name {
@@ -603,23 +496,6 @@
 .str-chat__message-replies-count-button:hover {
   background-color: hsl(var(--p) / 0.1) !important;
   border-color: hsl(var(--p)) !important;
-}
-
-/* Message Simple Actions */
-.str-chat__message-simple__actions {
-  background-color: transparent !important;
-}
-
-.str-chat__message-simple__actions__action {
-  background-color: transparent !important;
-}
-
-.str-chat__message-simple__actions__action--options {
-  background-color: transparent !important;
-}
-
-.str-chat__message-simple__actions__action--thread {
-  background-color: transparent !important;
 }
 
 /* Message Action Icons */
@@ -712,21 +588,6 @@
 
 /* Message Inner */
 .str-chat__message-inner {
-  background-color: transparent !important;
-}
-
-/* Message Content */
-.str-chat__message-content {
-  background-color: transparent !important;
-}
-
-.str-chat__message-text-inner {
-  background-color: transparent !important;
-  color: inherit !important;
-}
-
-/* Message Simple Content */
-.str-chat__message-simple-content {
   background-color: transparent !important;
 }
 

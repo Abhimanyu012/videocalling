@@ -55,7 +55,7 @@ const FriendListCard = ({ friend }) => {
                 <div className="flex-1 min-w-0">
                     <h3 className="font-semibold text-base-content text-base mb-1 truncate">{friend.fullName}</h3>
                     {friend.location && (
-                        <div className="flex items-center gap-1 text-xs text-base-content/60 mb-2">
+                        <div className="flex items-center gap-1 text-xs text-base-content/70 mb-2">
                             <MapPin className="w-3 h-3" />
                             <span className="truncate">{friend.location}</span>
                         </div>
@@ -65,7 +65,7 @@ const FriendListCard = ({ friend }) => {
                             <span className="flex items-center gap-1 px-2 py-1 bg-primary/10 text-primary rounded-md font-medium">
                                 {getLanguageFlag(friend.nativeLanguage)} {friend.nativeLanguage}
                             </span>
-                            <span className="text-base-content/40">↔</span>
+                            <span className="text-base-content/50">↔</span>
                             <span className="flex items-center gap-1 px-2 py-1 bg-secondary/10 text-secondary rounded-md font-medium">
                                 {getLanguageFlag(friend.learningLanguage)} {friend.learningLanguage}
                             </span>

@@ -118,7 +118,7 @@ const CustomMessage = (props) => {
 
                 {/* Timestamp */}
                 <div className={`flex items-center gap-2 mt-1 px-2 ${isMyMessage() ? 'flex-row-reverse' : 'flex-row'}`}>
-                    <span className="text-xs text-base-content/60">
+                    <span className="text-xs text-base-content/70">
                         {new Date(message.created_at).toLocaleTimeString([], { 
                             hour: '2-digit', 
                             minute: '2-digit' 

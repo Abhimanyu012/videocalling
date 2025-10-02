@@ -61,7 +61,7 @@ const FriendsCard = ({ user, onSendFriendRequest, isPending, isRequestSent }) =>
                             {user.fullName || user.name}
                         </h3>
                         {user.location && (
-                            <div className="flex items-center justify-center gap-1 text-xs text-base-content/60">
+                            <div className="flex items-center justify-center gap-1 text-xs text-base-content/70">
                                 <MapPin className="w-3 h-3" />
                                 <span>{user.location}</span>
                             </div>
@@ -75,7 +75,7 @@ const FriendsCard = ({ user, onSendFriendRequest, isPending, isRequestSent }) =>
                                 <span className="text-base">{getLanguageFlag(user.nativeLanguage)}</span>
                                 <span>{user.nativeLanguage}</span>
                             </div>
-                            <span className="text-base-content/40">→</span>
+                            <span className="text-base-content/50">→</span>
                             <div className="flex items-center gap-1.5 px-2.5 py-1.5 bg-secondary/10 text-secondary rounded-full font-medium">
                                 <span className="text-base">{getLanguageFlag(user.learningLanguage)}</span>
                                 <span>{user.learningLanguage}</span>
