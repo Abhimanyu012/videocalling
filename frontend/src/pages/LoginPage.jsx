@@ -1,33 +1,22 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 // import { useNavigate } from 'react-router-dom';
-import { ShipWheelIcon } from "lucide-react"
+import { ShipWheelIcon, Eye, EyeOff } from "lucide-react"
 import { Link } from 'react-router';
-import { useMutation, useQueryClient } from '@tanstack/react-query';
-import { login } from '../lib/api';
+
+import { useLogin } from '../hooks/useLogin';
 
 const LoginPage = () => {
   const [loginData, setLoginData] = useState({
     email: "",
     password: ""
   });
+  const [showPassword, setShowPassword] = useState(false);
+  const { isPending, error, loginMutation } = useLogin()
 
- const queryClient = useQueryClient()
-
-  const { mutate:loginMutation, isPending, error } = useMutation({
-    mutationFn: login,
-    onSuccess: (data) => {
-      console.log("login successful:", data);
-      queryClient.invalidateQueries({
-        queryKey: ["authUser"]
-      });
-      // Navigation handled by App.jsx route guards
-    }
-  })
-
-    const handleLogin = (e) => {
-        e.preventDefault()
-        loginMutation(loginData)
-    }
+  const handleLogin = (e) => {
+    e.preventDefault()
+    loginMutation(loginData)
+  }
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-2 sm:px-4">
       <div className="bg-white shadow-lg rounded-xl flex flex-col lg:flex-row w-full max-w-4xl overflow-hidden border border-primary/20 p-4 sm:p-6 md:p-8">
@@ -45,7 +34,14 @@ const LoginPage = () => {
           <p className="text-sm text-gray-500 mb-6 text-center lg:text-left">
             Log in to Let'sMEET and continue your journey with us.
           </p>
-          
+
+          {/* Display error message if login fails */}
+          {error && (
+            <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg text-red-600 text-sm">
+              {error?.response?.data?.message || "Login failed. Please try again."}
+            </div>
+          )}
+
           {/* Signup Form */}
           <form onSubmit={handleLogin} className="space-y-5">
             <div>
@@ -61,20 +57,29 @@ const LoginPage = () => {
             </div>
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">Password</label>
-              <input
-                type="password"
-                className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm"
-                placeholder="********"
-                value={loginData.password}
-                onChange={e => setLoginData({ ...loginData, password: e.target.value })}
-                required
-              />
+              <div className="relative">
+                <input
+                  type={showPassword ? "text" : "password"}
+                  className="w-full px-3 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-primary text-sm pr-10"
+                  placeholder="********"
+                  value={loginData.password}
+                  onChange={e => setLoginData({ ...loginData, password: e.target.value })}
+                  required
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
             </div>
             <button
               type="submit"
               className="w-full py-2 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition text-sm"
             >
-           {isPending ? "Logging..." : "Login"}
+              {isPending ? "Logging..." : "Login"}
             </button>
           </form>
           <p className="mt-4 text-sm text-gray-500 text-center lg:text-left">

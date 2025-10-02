@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { ShipWheelIcon } from "lucide-react"
+import { ShipWheelIcon, Eye, EyeOff } from "lucide-react"
 import { Link } from 'react-router-dom';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -11,6 +11,7 @@ const SignupPage = () => {
         email: "",
         password: ""
     });
+    const [showPassword, setShowPassword] = useState(false);
     const queryClient = useQueryClient()
 
     const { mutate:signupMutation, isPending, error } = useMutation({
@@ -80,14 +81,23 @@ const SignupPage = () => {
                         </div>
                         <div>
                             <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
-                            <input
-                                type="password"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition"
-                                placeholder="********"
-                                value={signupData.password}
-                                onChange={e => setSignUpData({ ...signupData, password: e.target.value })}
-                                required
-                            />
+                            <div className="relative">
+                                <input
+                                    type={showPassword ? "text" : "password"}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition pr-10"
+                                    placeholder="********"
+                                    value={signupData.password}
+                                    onChange={e => setSignUpData({ ...signupData, password: e.target.value })}
+                                    required
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPassword(!showPassword)}
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                >
+                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                </button>
+                            </div>
                             <span className="text-xs text-gray-500 mt-1 block">Password must be at least 6 characters long</span>
                         </div>
                         <button
