@@ -33,12 +33,10 @@ const Navbar = () => {
                         </Link>
                     </div>
                     <div className="flex items-center gap-3 sm:gap-4">
-                        <div className="avatar btn btn-ghost justify-start w-full gap-3 px-3 normal-case ">
+                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-base-200 transition-colors">
                             <Palette className="size-5 text-base-content opacity-70" />
                             <ThemeSelector />
                         </div>
-
-
                     </div>
                     <div className="flex items-center gap-3 sm:gap-4">
                         <div className="avatar btn btn-ghost justify-start w-full gap-3 px-3 normal-case ">
