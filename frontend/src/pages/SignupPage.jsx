@@ -18,18 +18,18 @@ const SignupPage = () => {
         signupMutation(signupData)
     }
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-50">
-            <div className="bg-white shadow-lg rounded-xl flex flex-col lg:flex-row w-full max-w-6xl overflow-hidden border border-primary/30 p-6">
+        <div className="min-h-screen flex items-center justify-center bg-base-100">
+            <div className="bg-base-200 shadow-lg rounded-xl flex flex-col lg:flex-row w-full max-w-6xl overflow-hidden border border-base-300 p-6">
                 {/* Left side: Signup form */}
                 <div className="w-full lg:w-1/2 p-8 flex flex-col justify-center">
                     {/* Logo */}
                     <div className="mb-3 justify-center lg:justify-start">
                         <Logo size="large" variant="default" className="justify-center lg:justify-start" />
                     </div>
-                    <p className="text-2xl font-bold text-gray-900 mb-2 text-center lg:text-left">
+                    <p className="text-2xl font-bold text-base-content mb-2 text-center lg:text-left">
                         Create your account
                     </p>
-                    <p className="text-base text-gray-600 mb-2 text-center lg:text-left">
+                    <p className="text-base text-base-content opacity-70 mb-2 text-center lg:text-left">
                         Join Let'sMEET and start connecting instantly.
                     </p>
                     {/* {error if any} */}
@@ -46,10 +46,10 @@ const SignupPage = () => {
                     {/* Signup Form */}
                     <form onSubmit={handleSignup} className="space-y-6">
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Full Name</label>
+                            <label className="block text-sm font-medium text-base-content mb-2">Full Name</label>
                             <input
                                 type="text"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition text-gray-900 bg-white"
+                                className="input input-bordered w-full"
                                 placeholder="Type your name"
                                 value={signupData.fullName}
                                 onChange={e => setSignUpData({ ...signupData, fullName: e.target.value })}
@@ -57,22 +57,22 @@ const SignupPage = () => {
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                            <label className="block text-sm font-medium text-base-content mb-2">Email</label>
                             <input
                                 type="email"
-                                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition text-gray-900 bg-white"
-                                placeholder="email@gmail.com"
+                                className="input input-bordered w-full"
+                                placeholder="example@example.com"
                                 value={signupData.email}
                                 onChange={e => setSignUpData({ ...signupData, email: e.target.value })}
                                 required
                             />
                         </div>
                         <div>
-                            <label className="block text-sm font-medium text-gray-700 mb-2">Password</label>
+                            <label className="block text-sm font-medium text-base-content mb-2">Password</label>
                             <div className="relative">
                                 <input
                                     type={showPassword ? "text" : "password"}
-                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-primary transition pr-10 text-gray-900 bg-white"
+                                    className="input input-bordered w-full pr-10"
                                     placeholder="********"
                                     value={signupData.password}
                                     onChange={e => setSignUpData({ ...signupData, password: e.target.value })}
@@ -81,21 +81,21 @@ const SignupPage = () => {
                                 <button
                                     type="button"
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 hover:text-gray-700"
+                                    className="absolute right-3 top-1/2 -translate-y-1/2 text-base-content opacity-60 hover:opacity-100"
                                 >
-                                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
+                                    {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
                                 </button>
                             </div>
-                            <span className="text-xs text-gray-500 mt-1 block">Password must be at least 6 characters long</span>
+                            <span className="text-xs text-base-content opacity-60 mt-1 block">Password must be at least 6 characters long</span>
                         </div>
                         <button
                             type="submit"
-                            className="w-full py-2 px-4 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+                            className="btn btn-primary w-full"
                         >
                             {isPending ? "Signing..." : "Create Account"}
                         </button>
                     </form>
-                    <p className="mt-4 text-sm text-gray-500">
+                    <p className="mt-4 text-sm text-base-content opacity-60">
                         Already have an account?{' '}
                         <Link to="/login" className="text-primary hover:underline">Login</Link>
                     </p>
@@ -108,12 +108,14 @@ const SignupPage = () => {
                         className="max-w-xs w-full mb-6 rounded-lg shadow"
                     />
                     <span className="text-primary text-3xl font-bold mb-2">Welcome!</span>
-                    <p className="text-center text-gray-700 max-w-xs">
+                    <p className="text-center text-base-content max-w-xs">
                         Welcome to Let'sMEET — sign up to connect, collaborate, and communicate with people everywhere. Get started in seconds.
                     </p>
                 </div>
             </div>
         </div>
+
+
     )
 }
 

@@ -59,7 +59,7 @@ const OnboardingPage = () => {
                     className="object-cover w-full h-full"
                   />
                 ) : (
-                  <div className="w-full h-full flex items-center justify-center text-gray-400">
+                  <div className="w-full h-full flex items-center justify-center text-base-content opacity-40">
                     <CameraIcon className='size-8 text-base-content opacity-40' />
                   </div>
                 )}

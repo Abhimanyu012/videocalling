@@ -3,3 +3,197 @@
 @plugin "daisyui" {
   themes: all;
 }
+
+/* Stream Chat - Complete Theme Integration with Tailwind/DaisyUI Colors */
+.str-chat {
+  /* Primary Colors */
+  --str-chat__primary-color: hsl(var(--p));
+  --str-chat__active-primary-color: hsl(var(--p));
+  
+  /* Background Colors */
+  --str-chat__surface-color: hsl(var(--b1));
+  --str-chat__secondary-surface-color: hsl(var(--b2));
+  --str-chat__primary-surface-color: hsl(var(--b2));
+  --str-chat__primary-surface-color-low-emphasis: hsl(var(--b3));
+  
+  /* Border Colors */
+  --str-chat__border-color: hsl(var(--bc) / 0.15);
+  
+  /* Text Colors */
+  --str-chat__text-color: hsl(var(--bc));
+  --str-chat__text-low-emphasis-color: hsl(var(--bc) / 0.6);
+  --str-chat__disabled-color: hsl(var(--bc) / 0.4);
+  
+  /* Message Colors */
+  --str-chat__own-message-bubble-color: hsl(var(--p));
+  --str-chat__own-message-text-color: hsl(var(--pc));
+  --str-chat__message-bubble-color: hsl(var(--b2));
+  
+  /* Additional Theme Colors */
+  --str-chat__secondary-color: hsl(var(--s));
+  --str-chat__accent-color: hsl(var(--a));
+  --str-chat__success-color: hsl(var(--su));
+  --str-chat__warning-color: hsl(var(--wa));
+  --str-chat__error-color: hsl(var(--er));
+  
+  /* Background for container */
+  background-color: hsl(var(--b1));
+  color: hsl(var(--bc));
+}
+
+/* Channel List Theme */
+.str-chat__channel-list {
+  background-color: hsl(var(--b2)) !important;
+}
+
+.str-chat__channel-preview-messenger {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__channel-preview-messenger:hover {
+  background-color: hsl(var(--b3)) !important;
+}
+
+.str-chat__channel-preview-messenger--active {
+  background-color: hsl(var(--p) / 0.1) !important;
+}
+
+/* Message List Theme */
+.str-chat__message-list {
+  background-color: hsl(var(--b1)) !important;
+}
+
+/* Message Bubbles Theme */
+.str-chat__message--me .str-chat__message-simple-text-inner {
+  background-color: hsl(var(--p)) !important;
+  color: hsl(var(--pc)) !important;
+}
+
+.str-chat__message--other .str-chat__message-simple-text-inner {
+  background-color: hsl(var(--b2)) !important;
+  color: hsl(var(--bc)) !important;
+  border: 1px solid hsl(var(--bc) / 0.15);
+}
+
+/* Input Area Theme */
+.str-chat__input-flat-wrapper {
+  background-color: hsl(var(--b2)) !important;
+  border-top: 1px solid hsl(var(--bc) / 0.15);
+}
+
+.str-chat__message-input {
+  background-color: hsl(var(--b2)) !important;
+}
+
+.str-chat__message-textarea textarea {
+  background-color: transparent !important;
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__message-textarea textarea::placeholder {
+  color: hsl(var(--bc) / 0.5) !important;
+}
+
+/* Send Button Theme */
+.str-chat__send-button {
+  background-color: hsl(var(--p)) !important;
+}
+
+.str-chat__send-button svg {
+  fill: hsl(var(--pc)) !important;
+}
+
+/* Emoji & File Upload Buttons */
+.str-chat__input-emojiselect,
+.str-chat__input-fileupload {
+  color: hsl(var(--bc) / 0.6) !important;
+}
+
+.str-chat__input-emojiselect:hover,
+.str-chat__input-fileupload:hover {
+  color: hsl(var(--p)) !important;
+}
+
+/* Reaction Theme */
+.str-chat__reaction-list {
+  background-color: hsl(var(--b2)) !important;
+  border: 1px solid hsl(var(--bc) / 0.15) !important;
+}
+
+.str-chat__message-reaction {
+  background-color: hsl(var(--b1)) !important;
+  border: 1px solid hsl(var(--bc) / 0.2) !important;
+}
+
+.str-chat__message-reaction:hover {
+  background-color: hsl(var(--p) / 0.1) !important;
+  border-color: hsl(var(--p)) !important;
+}
+
+.str-chat__message-reaction--mine {
+  background-color: hsl(var(--p) / 0.15) !important;
+  border-color: hsl(var(--p)) !important;
+}
+
+/* Thread Theme */
+.str-chat__thread {
+  background-color: hsl(var(--b1)) !important;
+  border-left: 1px solid hsl(var(--bc) / 0.15) !important;
+}
+
+.str-chat__thread-header {
+  background-color: hsl(var(--b2)) !important;
+  border-bottom: 1px solid hsl(var(--bc) / 0.15) !important;
+}
+
+/* Message Actions Menu Theme */
+.str-chat__message-actions-box {
+  background-color: hsl(var(--b2)) !important;
+  border: 1px solid hsl(var(--bc) / 0.15) !important;
+}
+
+.str-chat__message-actions-list-item {
+  color: hsl(var(--bc)) !important;
+}
+
+.str-chat__message-actions-list-item:hover {
+  background-color: hsl(var(--b3)) !important;
+}
+
+/* Quoted Message Theme */
+.str-chat__quoted-message-preview {
+  background-color: hsl(var(--b2)) !important;
+  border-left-color: hsl(var(--p)) !important;
+}
+
+/* Date Separator Theme */
+.str-chat__date-separator-line {
+  background-color: hsl(var(--bc) / 0.2) !important;
+}
+
+.str-chat__date-separator-date {
+  color: hsl(var(--bc) / 0.6) !important;
+  background-color: hsl(var(--b1)) !important;
+}
+
+/* Avatar Theme */
+.str-chat__avatar {
+  border: 2px solid hsl(var(--b3));
+}
+
+/* Loading Indicator Theme */
+.str-chat__loading-indicator {
+  color: hsl(var(--p)) !important;
+}
+
+/* Emoji Picker Theme */
+.str-chat__emoji-picker {
+  background-color: hsl(var(--b2)) !important;
+  border: 1px solid hsl(var(--bc) / 0.15) !important;
+}
+
+/* Attachment Theme */
+.str-chat__message-attachment-card {
+  background-color: hsl(var(--b2)) !important;
+  border-color: hsl(var(--bc) / 0.2) !important;
+}

@@ -16,42 +16,47 @@ const Navbar = () => {
     return (
         <nav className="bg-base-200 border-b border-base-300 sticky top-0 z-30 h-16 flex items-center">
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex items-center justify-end w-full">
-                    {/* only if we are in the chatpage */}
-                    {isChatPage && (
-                        <div className="flex-1">
-                            <Link to="/" className="hover:opacity-80 transition-opacity">
-                                <Logo size="medium" variant="navbar" />
-                            </Link>
-                        </div>
-                    )}
-
-                    <div className="flex items-center gap-3 sm:gap-4">
-                        <Link to="/notifications" className={`btn btn-ghost justify-start w-full gap-3 px-3 normal-case `}>
-                            <BellIcon className="size-5 text-base-content opacity-70" />
-
+                <div className="flex items-center justify-between w-full gap-4">
+                    {/* Logo - Hidden on large screens when sidebar is visible */}
+                    <div className="flex-1 lg:hidden">
+                        <Link to="/" className="hover:opacity-80 transition-opacity">
+                            <Logo size="medium" variant="navbar" />
                         </Link>
                     </div>
-                    <div className="flex items-center gap-3 sm:gap-4">
-                        <div className="flex items-center gap-2 px-3 py-2 rounded-lg hover:bg-base-200 transition-colors">
-                            <Palette className="size-5 text-base-content opacity-70" />
+
+                    {/* Right side actions */}
+                    <div className="flex items-center gap-2 sm:gap-3 lg:ml-auto">
+                        {/* Notifications */}
+                        <Link 
+                            to="/notifications" 
+                            className="btn btn-ghost btn-circle"
+                            aria-label="Notifications"
+                        >
+                            <BellIcon className="size-5" />
+                        </Link>
+
+                        {/* Theme Selector */}
+                        <div className="flex items-center gap-2 px-2 py-1 rounded-lg hover:bg-base-300 transition-colors">
+                            <Palette className="size-5 hidden sm:block" />
                             <ThemeSelector />
                         </div>
-                    </div>
-                    <div className="flex items-center gap-3 sm:gap-4">
-                        <div className="avatar btn btn-ghost justify-start w-full gap-3 px-3 normal-case ">
-                            <div className="w-5.5 rounded-full ">
-                                <img src={authUser?.profilePic} alt="User-avatar" />
+
+                        {/* User Avatar */}
+                        <div className="avatar">
+                            <div className="w-8 h-8 rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+                                <img src={authUser?.profilePic} alt="User avatar" />
                             </div>
                         </div>
-                    </div>
-                    <div className="flex items-center gap-3 sm:gap-4">
 
-                        <button className="avatar btn btn-ghost justify-start w-full gap-3 px-3 normal-case " onClick={logoutMutation}>
+                        {/* Logout Button */}
+                        <button 
+                            className="btn btn-ghost btn-circle" 
+                            onClick={logoutMutation}
+                            aria-label="Logout"
+                        >
                             <LogOut className="size-5" />
                         </button>
                     </div>
-
                 </div>
             </div>
         </nav>

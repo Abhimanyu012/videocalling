@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import './index.css'
 import App from './App.jsx'
+import { StreamProvider } from './contexts/StreamContext.jsx'
 
 import {
   QueryClient,
@@ -16,7 +17,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <BrowserRouter>
       <QueryClientProvider client={queryClient}>
-        <App />
+        <StreamProvider>
+          <App />
+        </StreamProvider>
       </QueryClientProvider>
     </BrowserRouter>
   </StrictMode>,
