@@ -19,12 +19,14 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // CORS configuration
-// const allowedOrigins = [
-//   "http://localhost:5173",
-//   "http://localhost:3000",
-//   process.env.FRONTEND_URL, // Your production frontend URL from .env
-//   "https://videocalling-frontend-eight.vercel.app" // Hardcoded for immediate fix
-// ].filter(Boolean) // Remove undefined values
+
+const allowedOriginsRaw = [
+  "http://localhost:5173",
+  "http://localhost:3000",
+  process.env.FRONTEND_URL,
+  "https://videocalling-frontend-eight.vercel.app"
+];
+const allowedOrigins = allowedOriginsRaw.filter(origin => origin && typeof origin === 'string');
 
 console.log('🔒 Allowed CORS origins:', allowedOrigins)
 
