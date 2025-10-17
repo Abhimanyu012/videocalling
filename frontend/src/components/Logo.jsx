@@ -1,5 +1,4 @@
 import React from 'react'
-import { ShipWheelIcon } from 'lucide-react'
 
 const Logo = ({ 
   size = 'medium', 
@@ -11,15 +10,15 @@ const Logo = ({
   // Size configurations
   const sizeConfig = {
     small: {
-      icon: 'size-6',
+      icon: 'w-6 h-6',
       text: 'text-lg',
     },
     medium: {
-      icon: 'size-8',
+      icon: 'w-8 h-8',
       text: 'text-2xl',
     },
     large: {
-      icon: 'size-10',
+      icon: 'w-10 h-10',
       text: 'text-3xl',
     }
   }
@@ -27,19 +26,16 @@ const Logo = ({
   // Variant configurations
   const variantConfig = {
     default: {
-      icon: 'text-primary',
-      text: 'text-primary font-extrabold tracking-tight',
-      container: 'flex items-center gap-2 sm:gap-3'
+      container: 'flex items-center gap-2 sm:gap-3',
+      text: 'text-primary font-extrabold tracking-tight'
     },
     navbar: {
-      icon: 'text-primary',
-      text: 'text-primary font-bold',
-      container: 'flex items-center gap-2 sm:gap-3'
+      container: 'flex items-center gap-2 sm:gap-3',
+      text: 'text-primary font-bold'
     },
     sidebar: {
-      icon: 'text-primary',
-      text: 'text-primary font-bold',
-      container: 'flex items-center gap-2 sm:gap-3'
+      container: 'flex items-center gap-2 sm:gap-3',
+      text: 'text-primary font-bold'
     }
   }
 
@@ -48,7 +44,11 @@ const Logo = ({
 
   return (
     <div className={`${currentVariant.container} ${className}`}>
-      <ShipWheelIcon className={`${currentSize.icon} ${currentVariant.icon} transition-colors`} />
+      <img 
+        src="/logo.svg" 
+        alt="VideoCall Logo" 
+        className={`${currentSize.icon} transition-transform hover:scale-110`}
+      />
       {showText && (
         <span className={`${currentSize.text} ${currentVariant.text} transition-colors`}>
           <span className="hidden sm:inline">Let's</span>

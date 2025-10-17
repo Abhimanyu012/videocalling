@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- Background Circle -->
+  <circle cx="100" cy="100" r="95" fill="#6366f1" opacity="0.1"/>
+  
+  <!-- Main Camera Body -->
+  <rect x="40" y="70" width="90" height="60" rx="8" fill="#6366f1" stroke="#4f46e5" stroke-width="3"/>
+  
+  <!-- Camera Lens -->
+  <circle cx="85" cy="100" r="20" fill="#312e81" stroke="#4f46e5" stroke-width="2"/>
+  <circle cx="85" cy="100" r="12" fill="#4f46e5"/>
+  <circle cx="82" cy="97" r="5" fill="#818cf8" opacity="0.6"/>
+  
+  <!-- Recording Light -->
+  <circle cx="120" cy="80" r="4" fill="#ef4444"/>
+  <circle cx="120" cy="80" r="6" fill="#ef4444" opacity="0.3"/>
+  
+  <!-- Camera Triangle (Play/Record symbol) -->
+  <path d="M 140 85 L 170 100 L 140 115 Z" fill="#6366f1" stroke="#4f46e5" stroke-width="2" stroke-linejoin="round"/>
+  <path d="M 145 92 L 163 100 L 145 108 Z" fill="#818cf8"/>
+  
+  <!-- Connection Waves -->
+  <path d="M 160 65 Q 165 60 170 65" stroke="#818cf8" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 155 55 Q 165 45 175 55" stroke="#818cf8" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  
+  <path d="M 160 135 Q 165 140 170 135" stroke="#818cf8" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <path d="M 155 145 Q 165 155 175 145" stroke="#818cf8" stroke-width="2" fill="none" stroke-linecap="round" opacity="0.6"/>
+  
+  <!-- User Icon (Person in call) -->
+  <circle cx="50" cy="85" r="6" fill="#e0e7ff"/>
+  <path d="M 42 100 Q 50 95 58 100" fill="#e0e7ff"/>
+</svg>
