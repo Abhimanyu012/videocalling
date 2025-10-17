@@ -37,7 +37,7 @@ const SignupPage = () => {
                     {
                         error && (
                             <div className="alert alert-error mb-3">
-                                <span>{error.response.data.message}</span>
+                                <span>{error?.response?.data?.message || error?.message || 'An error occurred'}</span>
                             </div>
                         )
                     }
