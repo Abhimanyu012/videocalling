@@ -1,0 +1,21 @@
+{
+  "name": "videocallling",
+  "version": "1.0.0",
+  "description": "A complete video calling and chat application with friend request system, built with **React**, **Node.js**, **MongoDB**, and **Stream.io**.A minimal MERN stack template to kickstart your videocalling app development.",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Abhimanyu012/videocalling.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Abhimanyu012/videocalling/issues"
+  },
+  "homepage": "https://github.com/Abhimanyu012/videocalling#readme"
+}
