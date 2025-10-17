@@ -19,25 +19,17 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // CORS configuration
-const allowedOrigins = [
-  "http://localhost:5173",
-  "http://localhost:3000",
-  process.env.FRONTEND_URL, // Your production frontend URL from .env
-  "https://videocalling-frontend-eight.vercel.app" // Hardcoded for immediate fix
-].filter(Boolean) // Remove undefined values
+// const allowedOrigins = [
+//   "http://localhost:5173",
+//   "http://localhost:3000",
+//   process.env.FRONTEND_URL, // Your production frontend URL from .env
+//   "https://videocalling-frontend-eight.vercel.app" // Hardcoded for immediate fix
+// ].filter(Boolean) // Remove undefined values
 
 console.log('🔒 Allowed CORS origins:', allowedOrigins)
 
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    if (allowedOrigins.includes(origin)) {
-      return callback(null, true);
-    } else {
-      return callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin:"https://videocalling-frontend-eight.vercel.app",
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization', 'Cookie']
